@@ -1,33 +1,6 @@
-#define _GNU_SOURCE	// qsort_r
-
-#include <ncurses.h>
-#include <stdlib.h>
-#include <math.h>
-#include <time.h>
-
-#define CELL_HEIGHT 4
-#define CELL_WIDTH 7
-#define N_RANDOM_BRICKS 3
-#define LINE_LEN 5
-
-
-typedef struct _Cell {
-	int y;
-	int x;
-} Cell;
-
-typedef struct _Game {
-	Cell cur_cell;
-	Cell cur_brick;
-	int score;
-	unsigned int board[9][9];
-	// TODO: N_TURNS
-	/* int N_FREE_CELLS = 9 * 9; */
-} Game;
-
+#include "lines.h"
 
 WINDOW *DEBUG_WIN, *BOARD_WIN, *INFO_WIN, *HELP_WIN;
-
 
 void draw_cell_border(int y, int x, short pair)
 {
@@ -232,7 +205,7 @@ void score(Game *G, int n)
 	G->score += (int) pow((double) 10, (double) n - 5);
 	wmove(INFO_WIN, 1, 1);
 	wclrtoeol(INFO_WIN);
-	wprintw(INFO_WIN, "score: %d", G->score);
+	wprintw(INFO_WIN, "SCORE: %d", G->score);
 	wrefresh(INFO_WIN);
 }
 
