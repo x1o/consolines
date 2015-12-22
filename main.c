@@ -49,6 +49,7 @@ int main()
 	mvwprintw(HELP_WIN, 2, 1, "Space to make a selection;");
 	mvwprintw(HELP_WIN, 3, 1, "q to quit.");
 
+	wrefresh(stdscr);
 	wrefresh(BOARD_WIN);
 	wrefresh(DEBUG_WIN);
 	wrefresh(INFO_WIN);
@@ -134,6 +135,7 @@ int main()
 	mvwprintw(message_win, 2, 2, "You scored %d points.", G.score);
 	mvwprintw(message_win, 4, 2, "Have another try.");
 	wrefresh(message_win);
+	flushinp();
 	getch();
 
 	die(EXIT_SUCCESS);
